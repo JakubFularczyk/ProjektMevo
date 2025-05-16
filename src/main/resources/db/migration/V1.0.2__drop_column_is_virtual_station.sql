@@ -1,0 +1,1 @@
+alter table station_information drop column is_virtual_station;
