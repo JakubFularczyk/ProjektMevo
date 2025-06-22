@@ -1,7 +1,9 @@
 package org.example.mevo.controller;
 
+import org.example.mevo.entites.BikeInformation;
 import org.example.mevo.entites.StationInformation;
 import org.example.mevo.entites.StationStatus;
+import org.example.mevo.repository.BikeInformationRepository;
 import org.example.mevo.repository.StationInformationRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -20,6 +22,7 @@ import java.util.List;
 public class TestController {
 
     private StationInformationRepository stationInformationRepository;
+    private BikeInformationRepository bikeInformationRepository;
 
     @GetMapping
     public List<StationInformation> getAll() {
@@ -30,8 +33,9 @@ public class TestController {
     public StationInformation save() {
         // rozwiazanie tymczasowe, obiekt na sztywno
         StationInformation entity = new StationInformation();
+        entity.setMevoStationId(1234);
         entity.setAddress("testowy adres");
-        entity.setName("testowa");
+        entity.setName("testow");
         entity.setLon(12.34);
         entity.setLat(12.34567);
         entity.setCapacity(3);
@@ -41,14 +45,27 @@ public class TestController {
         status.setNumBikesAvailable(12);
         status.setLastReported(Timestamp.from(Instant.now()));
         status.setStation(entity);
-
         entity.setStatus(status);
 
         return stationInformationRepository.save(entity);
     }
 
+    @PostMapping("/bike")
+    public BikeInformation saveBike() {
+        BikeInformation bike = new BikeInformation();
+        bike.setEbike(true);
+        bike.setMevoBikeId("1234");
+
+        return bikeInformationRepository.save(bike);
+    }
+
     @Autowired
     public void setStationInformationRepository(StationInformationRepository stationInformationRepository) {
         this.stationInformationRepository = stationInformationRepository;
+    }
+
+    @Autowired
+    public void setBikeInformationRepository(BikeInformationRepository bikeInformationRepository) {
+        this.bikeInformationRepository = bikeInformationRepository;
     }
 }

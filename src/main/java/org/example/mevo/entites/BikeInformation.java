@@ -3,7 +3,7 @@ package org.example.mevo.entites;
 import jakarta.persistence.*;
 import lombok.Data;
 
-import java.security.Timestamp;
+import java.sql.Timestamp;
 import java.util.List;
 
 @Data
@@ -11,7 +11,15 @@ import java.util.List;
 public class BikeInformation {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "bikeInformationSequenceGenerator")
+    @SequenceGenerator(
+            name = "bikeInformationSequenceGenerator",
+            sequenceName = "bike_information_id_seq",
+            allocationSize = 1
+    )
     private Integer bikeId;
+
+    private String mevoBikeId;
 
     private double lat;
 
@@ -27,7 +35,7 @@ public class BikeInformation {
 
     private Integer currentRangeMeters;
 
-    @OneToMany(mappedBy = "bikeInformation")
+    @OneToMany(mappedBy = "bikeInformation", cascade = CascadeType.ALL)
     private List<HistoryBikeStatus> bikeInformationHistory;
 
 }

@@ -1,24 +1,21 @@
 package org.example.mevo.entites;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.OneToOne;
+import jakarta.persistence.*;
 import lombok.Data;
-import lombok.ToString;
 
 import java.sql.Timestamp;
+import java.util.UUID;
 
-@Entity
 @Data
-public class StationStatus {
+@Entity
+public class HistoryStationStatus {
 
     @Id
-    @OneToOne
+    @GeneratedValue(strategy = GenerationType.UUID)
+    private UUID historyStationStatusId;
+
+    @ManyToOne
     @JoinColumn(name = "station_id")
-    @JsonIgnore
-    @ToString.Exclude
     private StationInformation station;
 
     private boolean isInstalled;

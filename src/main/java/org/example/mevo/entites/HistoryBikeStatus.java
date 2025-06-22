@@ -3,7 +3,7 @@ package org.example.mevo.entites;
 import jakarta.persistence.*;
 import lombok.Data;
 
-import java.security.Timestamp;
+import java.sql.Timestamp;
 
 @Entity
 @Data

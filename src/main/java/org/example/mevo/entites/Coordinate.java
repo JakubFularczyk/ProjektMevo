@@ -1,9 +1,6 @@
 package org.example.mevo.entites;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToOne;
+import jakarta.persistence.*;
 import lombok.Data;
 
 @Data
@@ -11,6 +8,7 @@ import lombok.Data;
 public class Coordinate {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer coordinateId;
 
     @ManyToOne

@@ -1,17 +1,21 @@
 package org.example.mevo.entites;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.Data;
+
+import java.util.UUID;
 
 @Entity
 @Data
 public class HistoryStationInformation {
 
     @Id
-    private Integer HistorystationId;
+    @GeneratedValue(strategy = GenerationType.UUID)
+    private UUID historyStationInformationId;
 
-    private Integer stationID; //TODO KLUCZ
+    @ManyToOne
+    @JoinColumn(name = "station_id")
+    private StationInformation station;
 
     private String address;
 
