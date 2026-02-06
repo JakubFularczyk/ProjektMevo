@@ -30,3 +30,5 @@ spring.datasource.password=postgres
 spring.jpa.show-sql=true
 spring.flyway.enabled=true
 spring.flyway.locations=classpath:db.migration
+
+
