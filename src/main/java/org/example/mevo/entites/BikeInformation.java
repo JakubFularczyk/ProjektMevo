@@ -19,6 +19,7 @@ public class BikeInformation {
     )
     private Integer bikeId;
 
+    @Column(name = "mevo_bike_id")
     private String mevoBikeId;
 
     private double lat;

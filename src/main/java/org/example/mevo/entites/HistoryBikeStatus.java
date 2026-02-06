@@ -10,15 +10,17 @@ import java.sql.Timestamp;
 public class HistoryBikeStatus {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.UUID)
+    @Column(name="history_bike_status_id")
     private Integer historyBikeStatusId;
 
     @ManyToOne
-    @JoinColumn(name = "station_id")
+    @JoinColumn(name = "bike_id")
     private BikeInformation bikeInformation;
 
     private double lat;
 
-    private double lot;
+    private double lon;
 
     @Column(name = "status")
     @Enumerated(EnumType.STRING)

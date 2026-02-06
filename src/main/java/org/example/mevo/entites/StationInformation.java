@@ -11,10 +11,12 @@ import java.util.List;
 public class StationInformation {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "station_id")
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "stationSeq")
+    @SequenceGenerator(name="stationSeq", sequenceName="station_information_seq", allocationSize=1)
+    @Column(name="station_id")
     private Integer stationId;
 
+    @Column(name="mevo_station_id")
     private Integer mevoStationId;
 
     private String name;
