@@ -3,10 +3,8 @@ package org.example.mevo.service;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import org.example.mevo.api.Station;
-import org.example.mevo.api.StationInformationDTO;
-import org.example.mevo.entites.StationInformation;
-import org.springframework.beans.factory.annotation.Autowired;
+import org.example.mevo.dtos.Station;
+import org.example.mevo.dtos.StationInformationDTO;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
@@ -18,8 +16,8 @@ public class TestService {
 
     private static final String STATION_INFORMATION_URL = "https://gbfs.urbansharing.com/rowermevo.pl/station_information.json";
 
-    private RestTemplate restTemplate =  new RestTemplate();
-    private ObjectMapper objectMapper = new ObjectMapper();
+    private final RestTemplate restTemplate =  new RestTemplate();
+    private final ObjectMapper objectMapper = new ObjectMapper();
 
 
     public StationInformationDTO getDataFromAPI() {

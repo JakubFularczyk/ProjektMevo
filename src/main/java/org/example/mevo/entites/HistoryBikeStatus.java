@@ -4,6 +4,7 @@ import jakarta.persistence.*;
 import lombok.Data;
 
 import java.sql.Timestamp;
+import java.util.UUID;
 
 @Entity
 @Data
@@ -12,7 +13,7 @@ public class HistoryBikeStatus {
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
     @Column(name="history_bike_status_id")
-    private Integer historyBikeStatusId;
+    private UUID historyBikeStatusId;
 
     @ManyToOne
     @JoinColumn(name = "bike_id")

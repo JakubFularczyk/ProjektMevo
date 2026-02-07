@@ -1,4 +1,4 @@
-package org.example.mevo.api;
+package org.example.mevo.dtos;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;

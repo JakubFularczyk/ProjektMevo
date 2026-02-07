@@ -5,6 +5,8 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
+import java.util.Optional;
+
 
 @Repository
 public interface StationInformationRepository extends JpaRepository<StationInformation, Integer> {
@@ -15,4 +17,5 @@ public interface StationInformationRepository extends JpaRepository<StationInfor
     @Query(value = "select * from station_information s where s.name = ?1 and s.address = ?2", nativeQuery = true)
     StationInformation findByNameAndAddress(String name, String address);
 
+    Optional<StationInformation> findByMevoStationId(Integer mevoStationId);
 }
